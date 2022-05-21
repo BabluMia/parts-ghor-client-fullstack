@@ -9,12 +9,14 @@ import RequireAuth from "./Pages/Login/RequireAuth";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import History from "./Pages/Dashboard/History";
 import Users from "./Pages/Dashboard/Users";
+import SingleProduct from "./Pages/Home/SingleProduct";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="product/:id" element={<SingleProduct/>}></Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/blog" element={<Blog/>} />

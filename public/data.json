@@ -1,0 +1,66 @@
+[
+    {
+        "name" :"Web Cam",
+        "price":50,
+        "min_order":200,
+        "quantity":10530,
+        "desc" : "Full HD widescreen video calling: Logitech C270 let you make widescreen video calls in HD 720p at 30fps. The lense with 60-degree field of view covers all of the action",
+        "img": "https://i.ibb.co/wzKNVZ8/Skydroid-H12-remote-control-is-only-a-single-receiver-three-body-camera-parts-Agricultural-spray-dro.webp"
+    },
+    {
+        "name" :" Cam Cable",
+        "price":1.5,
+        "min_order":200,
+        "quantity":130530,
+        "desc" : "Full HD widescreen video calling: Logitech C270 let you make widescreen video calls in HD 720p at 30fps. The lense with 60-degree field of view covers all of the action",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdniU9U4ApPMVfbylgpu2SELMg9TFSRstb1Q&usqp=CAU"
+    },
+    {
+        "name" :" Silicone Cable",
+        "price":2.3,
+        "min_order":400,
+        "quantity":23030,
+        "desc" : "Full HD widescreen video calling: Logitech C270 let you make widescreen video calls in HD 720p at 30fps. The lense with 60-degree field of view covers all of the action",
+        "img": "https://team-legit.com/assets/images/ACQ2336X-1.jpg"
+    },
+    {
+        "name" :"Gopro Case",
+        "price":7,
+        "min_order":250,
+        "quantity":30530,
+        "desc" : "Full HD widescreen video calling: Logitech C270 let you make widescreen video calls in HD 720p at 30fps. The lense with 60-degree field of view covers all of the action",
+        "img": "https://i5.walmartimages.com/asr/6460c29a-e26b-4879-b27f-33d7b8dee646.cad5888bba429bcde3be1043d2dbd993.jpeg"
+    },
+    {
+        "name" :"Zoom Lense",
+        "price":70,
+        "min_order":80,
+        "quantity":3130,
+        "desc" : "Full HD widescreen video calling: Logitech C270 let you make widescreen video calls in HD 720p at 30fps. The lense with 60-degree field of view covers all of the action",
+        "img": "https://ae01.alicdn.com/kf/H2d076995ce424960a250b521ccf4c92dp/10X-Zoom-1080P-WDR-Camera-with-HDMI-AV-Output-OSD-DVR-Snapshot-and-Playback-For-FPV.jpg"
+    },
+    {
+        "name" :"Flash Light",
+        "price":120,
+        "min_order":100,
+        "quantity":2530,
+        "desc" : "Full HD widescreen video calling: Logitech C270 let you make widescreen video calls in HD 720p at 30fps. The lense with 60-degree field of view covers all of the action",
+        "img": "https://i.ebayimg.com/images/g/OSQAAMXQ-3NRnELP/s-l400.jpg"
+    },
+    {
+        "name" :"Cam Remote",
+        "price":80,
+        "min_order":200,
+        "quantity":12530,
+        "desc" : "Full HD widescreen video calling: Logitech C270 let you make widescreen video calls in HD 720p at 30fps. The lense with 60-degree field of view covers all of the action",
+        "img": "https://cdn3.volusion.com/kqbxf.cwjap/v/vspfiles/photos/AC-CA-WSHRM3PIN-2.jpg?v-cache=1359009488"
+    },
+    {
+        "name" :"SD Card",
+        "price":12,
+        "min_order":500,
+        "quantity":16530,
+        "desc" : "Full HD widescreen video calling: Logitech C270 let you make widescreen video calls in HD 720p at 30fps. The lense with 60-degree field of view covers all of the action",
+        "img": "https://assets.kogan.com/files/product/kogan-sd-cards/KASDC128U3A_1.jpg?auto=webp&canvas=340%2C226&fit=bounds&height=226&quality=75&width=340"
+    }
+]
