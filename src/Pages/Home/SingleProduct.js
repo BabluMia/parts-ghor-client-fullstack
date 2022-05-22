@@ -5,12 +5,14 @@ import swal from "sweetalert";
 import Header from "../Shared/Header";
 import Loading from "../Shared/Loading";
 
+
 const SingleProduct = () => {
   const { id } = useParams();
   const {
     isLoading,
     error,
     data: product,
+    refetch
   } = useQuery(["product", id], () =>
     fetch(`http://localhost:5000/product/${id}`).then((res) => res.json())
   );
@@ -28,6 +30,7 @@ const SingleProduct = () => {
   return (
     <>
       <Header />
+      <h2 className="text-center my-4 text-3xl font-bold">Purchace Now</h2>
       <div>
         <div class="hero min-h-screen ">
           <div class="hero-content flex-col lg:flex-row">

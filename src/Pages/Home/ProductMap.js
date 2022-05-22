@@ -22,7 +22,6 @@ const ProductMap = ({ product }) => {
         <p>Per Quantity: ${price}</p>
         <p>Minimum Order: {min_order}</p>
         <p>In Stock: {quantity}</p>
-        <p>In Stock: {_id}</p>
         <div class="card-actions justify-end">
         <Link to={`/product/${_id}`}>
             <button className="btn btn-primary">Book Loot</button>
