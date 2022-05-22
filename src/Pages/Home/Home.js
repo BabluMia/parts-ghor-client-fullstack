@@ -3,6 +3,7 @@ import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
 import Banner from './Banner';
 import ExtraOne from './ExtraOne';
+import ExtraTwo from './ExtraTwo';
 import Products from './Products';
 import Summary from './Summary';
 
@@ -17,6 +18,8 @@ const Home = () => {
             <Summary/>
             {/* extra one */}
             <ExtraOne/>
+            {/* extra two */}
+            <ExtraTwo/>
             {/* footer */}
             <Footer/>
         </div>
