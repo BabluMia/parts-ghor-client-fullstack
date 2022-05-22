@@ -7,9 +7,14 @@ import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/Contact/Contact";
 import RequireAuth from "./Pages/Login/RequireAuth";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import History from "./Pages/Dashboard/History";
+
 import Users from "./Pages/Dashboard/Users";
 import SingleProduct from "./Pages/Home/SingleProduct";
+import MyOrder from "./Pages/Dashboard/MyOrder";
+import Profile from "./Pages/Dashboard/Profile";
+import Portfolio from "./Pages/Dashboard/Portfolio";
+import AddProduct from "./Pages/Dashboard/AddProduct";
+import NotFound from "./Pages/Shared/NotFound";
 
 
 function App() {
@@ -29,10 +34,14 @@ function App() {
         <Route path="/blog" element={<Blog/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} >
-          <Route index element={<History/>}></Route>
+          <Route index element={<MyOrder/>}></Route>
+          <Route path="profile" element={<Profile/>}></Route>
+          <Route path="portfolio" element={<Portfolio/>}></Route>
           <Route path="users" element={<Users/>}></Route>
+          <Route path="add-products" element={<AddProduct/>}></Route>
           <Route></Route>
         </Route>
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </>
   );

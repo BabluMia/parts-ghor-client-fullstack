@@ -1,11 +1,11 @@
 import React from 'react';
 
-const History = () => {
+const MyOrder = () => {
     return (
         <div>
-            From History
+            <h3>My Order</h3>
         </div>
     );
 };
 
-export default History;
+export default MyOrder;

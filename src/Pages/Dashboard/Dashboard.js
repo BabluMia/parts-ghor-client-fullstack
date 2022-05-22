@@ -15,9 +15,9 @@ const Dashboard = () => {
 
   return (
     <>
-    <div>
-      <Header/>
-    </div>
+      <div>
+        <Header />
+      </div>
       <div class="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content ">
@@ -33,21 +33,25 @@ const Dashboard = () => {
             {/* <!-- Sidebar content here --> */}
 
             <li>
-              <Link to={"/dashboard/history"}>My History</Link>
+              <Link to={"/dashboard"}>My Order</Link>
             </li>
             <li>
-              <Link to={"/dashboard/users"}>All user</Link>
+              <Link to={"/dashboard/profile"}>My Profile</Link>
             </li>
+            <li>
+              <Link to={"/dashboard/portfolio"}>My Portfolio</Link>
+            </li>
+
             {admin && (
               <>
                 <li>
-                  <Link to={"/dashboard"}>All User</Link>
+                  <Link to={"/dashboard/users"}>All user</Link>
                 </li>
                 <li>
-                  <Link to={"/dashboard"}>Add Doctor</Link>
+                  <Link to={"/dashboard/add-products"}>Add Products</Link>
                 </li>
                 <li>
-                  <Link to={"/dashboard"}>Manage Doctors</Link>
+                  <Link to={"/dashboard"}>Manage Order</Link>
                 </li>
               </>
             )}
