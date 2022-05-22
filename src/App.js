@@ -15,6 +15,7 @@ import Profile from "./Pages/Dashboard/Profile";
 import Portfolio from "./Pages/Dashboard/Portfolio";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import NotFound from "./Pages/Shared/NotFound";
+import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/my-portfolio" element={<MyPortfolio/>}></Route>
         <Route path="product/:id" element={
           <RequireAuth>
              <SingleProduct/>

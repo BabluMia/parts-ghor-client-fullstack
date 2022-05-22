@@ -50,7 +50,15 @@ const Header = () => {
         </li>
         <li className="">
           <Link
-            to={"/about"}
+            to={"/my-portfolio"}
+            className="hover:bg-[#3e5d51] hover:text-white rounded-lg"
+          >
+            PORTFOLIO
+          </Link>
+        </li>
+        <li className="">
+          <Link
+            to={"/"}
             className="hover:bg-[#3e5d51] hover:text-white rounded-lg"
           >
             ABOUT
