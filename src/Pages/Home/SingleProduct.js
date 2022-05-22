@@ -1,18 +1,20 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import swal from "sweetalert";
+import auth from "../../firebase.init";
 import Header from "../Shared/Header";
 import Loading from "../Shared/Loading";
 
-
 const SingleProduct = () => {
+  const [user] = useAuthState(auth)
   const { id } = useParams();
   const {
     isLoading,
     error,
     data: product,
-    refetch
+    refetch,
   } = useQuery(["product", id], () =>
     fetch(`http://localhost:5000/product/${id}`).then((res) => res.json())
   );
@@ -27,6 +29,28 @@ const SingleProduct = () => {
     });
   }
   const { name, price, min_order, quantity, desc, img } = product;
+
+  // place order
+  const placeOrder = (event) => {
+    event.preventDefault()
+    const order = event.target.order.value
+    const orderData = {
+      orderQuantity:order,
+      name:user?.displayName,
+      email:user?.email,
+      amout:parseInt(order * price)
+    }
+    if(order < min_order || order > quantity){
+      swal({
+        title:'Placement Error',
+        text:'Please order by seing quantity',
+        icon:'error'
+      })
+    }else{
+      console.log(orderData);
+    }
+    event.target.reset()
+  };
   return (
     <>
       <Header />
@@ -34,15 +58,45 @@ const SingleProduct = () => {
       <div>
         <div class="hero min-h-screen ">
           <div class="hero-content flex-col lg:flex-row">
-            <img src={img} className=" rounded-2xl w-[350px] lg:w-[550px]"  alt='product img' />
+            <img
+              src={img}
+              className=" rounded-2xl w-[350px] lg:w-[550px]"
+              alt="product img"
+            />
             <div className="mx-0 lg:mx-5">
               <h1 class="text-3xl font-bold">Name:{name}</h1>
-              <p class="mt-4 text-lg border-b-2 border-b-cyan-900 inline-block">Product Description:</p>
+              <p class="mt-4 text-lg border-b-2 border-b-cyan-900 inline-block">
+                Product Description:
+              </p>
               <span className=" mb-4 block">{desc}</span>
-              <p className="my-2">Price Per Pices: ${price}</p>
-              <p className="my-2">Minimum Booking: ${min_order}</p>
-              <p className="my-2">Available: ${quantity}</p>
-              <button class="btn btn-primary">Get Started</button>
+              <p className="my-2 font-semibold">
+                Price Per Pices:{" "}
+                <span className="text-lg font-bold">${price}</span>
+              </p>
+              <p className="my-2 font-semibold">
+                Minimum Booking:{" "}
+                <span className="text-lg font-bold"> ${min_order}</span>
+              </p>
+              <p className="my-2 font-semibold">
+                Available In Stock:{" "}
+                <span className="text-lg font-bold">${quantity}</span>
+              </p>
+              <div >
+                <form className="grid grid-cols-1" action="" onSubmit={placeOrder}>
+                  <input
+                    className="p-3 my-3 border-2"
+                    required
+                    type="number"
+                    placeholder={`Minimum Order ${min_order} Please`}
+                    name='order'
+                  />
+                  <input
+                    type="submit"
+                    value="Place Order"
+                    class="btn bg-transparent text-accent hover:text-white w-40"
+                  />
+                </form>
+              </div>
             </div>
           </div>
         </div>

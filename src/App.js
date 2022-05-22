@@ -11,13 +11,20 @@ import History from "./Pages/Dashboard/History";
 import Users from "./Pages/Dashboard/Users";
 import SingleProduct from "./Pages/Home/SingleProduct";
 
+
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="product/:id" element={<SingleProduct/>}></Route>
+        <Route path="product/:id" element={
+          <RequireAuth>
+             <SingleProduct/>
+          </RequireAuth>
+           
+        }></Route>
         <Route path="/login" element={<Login />} />
+        
         <Route path="/signup" element={<Signup />} />
         <Route path="/blog" element={<Blog/>} />
         <Route path="/contact" element={<Contact/>} />

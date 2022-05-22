@@ -1,9 +1,8 @@
 import React from "react";
-import { FaBeer } from 'react-icons/fa';
 
 const Summary = () => {
   return (
-    <div class="py-20 shadow-lg mb-12 grid items-center justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div class="py-20 bg-slate-100 mb-12 grid items-center justify-around grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       <div class="stat text-center">
         <div class="stat-figure text-primary">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSorM3YYgVGlbhgb3uS4r_zO8-947LIkW7WJg&usqp=CAU" className="w-20" alt="" />

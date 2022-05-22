@@ -39,29 +39,9 @@ const Signup = () => {
   const handleGoogle = () => {
     signInWithGoogle();
   };
-  //   navigate
-  // useEffect(() => {
-  //   if (user || gUser) {
-  //     console.log(user || gUser);
-  //     if(user){
-    // swal({
-    //   title: "Account Create",
-    //   text: "Succesfully Create By Emaill Password",
-    //   icon: "success",
-    // });
-  //     }else if(gUser){
-  // swal({
-  //   title: "Account Create",
-  //   text: "Succesfully Create By Google",
-  //   icon: "success",
-  // });
-  //     }
-
-  //     navigate("/appointment");
-  //   }
-  // }, [user, gUser, from, navigate]);
+  
   if (token) {
-    navigate("/appointment");
+    navigate("/");
   }
 
   // loading
@@ -78,10 +58,13 @@ const Signup = () => {
     });
   }
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="  card w-96 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title text-center mx-auto">SIGNUP </h2>
+    <div class="hero min-h-screen bg-base-200">
+      <div class="hero-content flex-col lg:flex-row-reverse">
+        <div class="text-center lg:text-left ">
+          <img src="https://imgs.bharatmatrimony.com/bmimgs/login/login-otp-banner.png" alt="" />
+        </div>
+        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div class="card-body bg-[#ead7d7] ">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-xs">
               <label className="label">
@@ -90,7 +73,7 @@ const Signup = () => {
               <input
                 type="text"
                 placeholder="Your Name"
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full border-slate-600 max-w-xs"
                 {...register("name", {
                   required: {
                     value: true,
@@ -111,7 +94,7 @@ const Signup = () => {
               <input
                 type="email"
                 placeholder="Your Email"
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full max-w-xs border-slate-600"
                 {...register("email", {
                   required: {
                     value: true,
@@ -143,7 +126,7 @@ const Signup = () => {
               <input
                 type="password"
                 placeholder="Password"
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full max-w-xs border-slate-600"
                 {...register("password", {
                   required: {
                     value: true,
@@ -173,24 +156,25 @@ const Signup = () => {
               <input
                 type="submit"
                 value={"LogIn"}
-                className="btn btn-accent"
+                className="btn btn-success"
               ></input>
             </div>
           </form>
           <p className="text-sm text-center">
             Already Have An Account?{" "}
             <Link to={"/login"}>
-              <span className="text-secondary">Please Go To Login</span>
+              <span className="text-black">Please Go To Login</span>
             </Link>
           </p>
           <div className="divider">OR</div>
           <div className="form-control ">
             <button
               onClick={handleGoogle}
-              className="btn text-accent hover:text-white bg-transparent border-accent"
+              className="btn text-accent hover:text-white btn-success  border-accent"
             >
               CONTINUE WITH GOOGLE
             </button>
+          </div>
           </div>
         </div>
       </div>

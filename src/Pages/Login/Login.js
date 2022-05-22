@@ -75,19 +75,22 @@ const Login = () => {
     });
   }
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="  card w-96 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title text-center mx-auto">LOGIN </h2>
+    <div class="hero min-h-screen bg-base-200">
+      <div class="hero-content flex-col lg:flex-row-reverse">
+        <div class="text-center lg:text-left ">
+          <img src="https://imgs.bharatmatrimony.com/bmimgs/login/login-otp-banner.png" alt="" />
+        </div>
+        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div class="card-body bg-[#ead7d7] ">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-xs">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text ">Email</span>
               </label>
               <input
                 type="email"
                 placeholder="Your Email"
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered border-slate-600 w-full max-w-xs "
                 {...register("email", {
                   required: {
                     value: true,
@@ -119,7 +122,7 @@ const Login = () => {
               <input
                 type="password"
                 placeholder="Password"
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered border-slate-600 w-full max-w-xs"
                 {...register("password", {
                   required: {
                     value: true,
@@ -155,24 +158,25 @@ const Login = () => {
               <input
                 type="submit"
                 value={"LogIn"}
-                className="btn btn-accent"
+                className="btn btn-success"
               ></input>
             </div>
           </form>
           <p className="text-sm text-center">
-            New In Doctor's Portal?{" "}
+            New In Parts Ghor?{" "}
             <Link to={"/signup"}>
-              <span className="text-secondary">Create an acccount</span>
+              <span className="text-slate-900">Create an acccount</span>
             </Link>
           </p>
           <div className="divider">OR</div>
           <div className="form-control ">
             <button
               onClick={handleGoogle}
-              className="btn text-accent hover:text-white bg-transparent border-accent"
+              className="btn text-accent hover:text-white btn-success  border-accent"
             >
               CONTINUE WITH GOOGLE
             </button>
+          </div>
           </div>
         </div>
       </div>
