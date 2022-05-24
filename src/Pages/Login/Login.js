@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import {
+  useAuthState,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
@@ -19,7 +20,9 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const [token] = useToken(user || gUser)
+  const [user3] = useAuthState(auth)
+  const [token] = useToken(user3?.email , user3?.displayName)
+
 
   const navigate = useNavigate();
   const location = useLocation();

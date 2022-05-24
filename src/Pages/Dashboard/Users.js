@@ -5,28 +5,30 @@ import Loading from "../Shared/Loading";
 import UserRow from "./UserRow";
 
 const Users = () => {
-    const { isLoading, error, data } = useQuery(['repoData'], () =>
-     fetch('http://localhost:5000/user',{
-         method:'GET',
-         headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-     }).then(res =>
-       res.json()
-     )
-   )
-   if(isLoading){
-       return <Loading/>
-   }
-   if(error){
-       swal({
-           title:'Fetch Error',
-           text:'Faild To Fetch Data',
-           icon:'error'
-       })
-   }
-   console.log(data);
+  const {
+    isLoading,
+    error,
+    data: users,
+  } = useQuery(["usersData"], () =>
+    fetch("https://nameless-inlet-18267.herokuapp.com/user", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
+  );
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (error) {
+    swal({
+      title: "Fetch Error",
+      text: "Faild To Fetch Data",
+      icon: "error",
+    });
+  }
+  // console.log(users);
   return (
     <div class="overflow-x-auto">
       <table class="table w-full">
@@ -39,10 +41,10 @@ const Users = () => {
           </tr>
         </thead>
         <tbody>
-          {
-              data.map((user,index)=> <UserRow key={index} index={index} user={user} />)
-          }
-
+          {users &&
+            users?.map((user, index) => (
+              <UserRow key={index} index={index} user={user} />
+            ))}
         </tbody>
       </table>
     </div>

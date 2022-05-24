@@ -16,6 +16,7 @@ import Portfolio from "./Pages/Dashboard/Portfolio";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import NotFound from "./Pages/Shared/NotFound";
 import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
+import AddReview from "./Pages/Dashboard/AddReview";
 
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
         <Route path="dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} >
           <Route index element={<MyOrder/>}></Route>
           <Route path="profile" element={<Profile/>}></Route>
-          <Route path="portfolio" element={<Portfolio/>}></Route>
+          <Route path="add-review" element={<AddReview/>}></Route>
           <Route path="users" element={<Users/>}></Route>
           <Route path="add-products" element={<AddProduct/>}></Route>
           <Route></Route>

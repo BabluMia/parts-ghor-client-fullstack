@@ -8,7 +8,7 @@ import Loading from "../Shared/Loading";
 
 const Dashboard = () => {
   const [user, loading] = useAuthState(auth);
-  const [admin] = useAdmin(user);
+  // const [admin] = useAdmin(user);
   if (loading) {
     return <Loading />;
   }
@@ -39,10 +39,10 @@ const Dashboard = () => {
               <Link to={"/dashboard/profile"}>My Profile</Link>
             </li>
             <li>
-              <Link to={"/dashboard/portfolio"}>My Portfolio</Link>
+              <Link to={"/dashboard/add-review"}>Add Review</Link>
             </li>
 
-            {admin && ( <></>)}
+            {/* {admin && ( <></>)} */}
               <>
                 <li>
                   <Link to={"/dashboard/users"}>All user</Link>

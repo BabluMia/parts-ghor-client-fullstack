@@ -10,7 +10,9 @@ const Products = () => {
     error,
     data: products,
   } = useQuery("products", () =>
-    fetch("http://localhost:5000/products").then((res) => res.json())
+    fetch("https://nameless-inlet-18267.herokuapp.com/products").then((res) =>
+      res.json()
+    )
   );
   if (isLoading) {
     return <Loading />;

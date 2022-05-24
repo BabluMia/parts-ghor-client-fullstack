@@ -5,6 +5,7 @@ import Banner from './Banner';
 import ExtraOne from './ExtraOne';
 import ExtraTwo from './ExtraTwo';
 import Products from './Products';
+import ReviewSlider from './ReviewSlider';
 import Summary from './Summary';
 
 const Home = () => {
@@ -20,6 +21,8 @@ const Home = () => {
             <ExtraOne/>
             {/* extra two */}
             <ExtraTwo/>
+            {/* slider */}
+            <ReviewSlider/>
             {/* footer */}
             <Footer/>
         </div>

@@ -11,25 +11,25 @@ const Contact = () => {
       text: event.target.text.value,
     };
     console.log(data);
-    fetch(`http://localhost:5000/feedback`, {
+    fetch(`https://nameless-inlet-18267.herokuapp.com/feedback`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(data),
     })
-    .then(res=>res.json())
-    .then(data=>{
-        if(data.success){
-            swal({
-                title:'Send Response',
-                text:'Successfully Sended Your Response',
-                icon:'success'
-            })
-            console.log(data);
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          swal({
+            title: "Send Response",
+            text: "Successfully Sended Your Response",
+            icon: "success",
+          });
+          console.log(data);
         }
-    })
-    event.target.reset()
+      });
+    event.target.reset();
   };
   return (
     <>

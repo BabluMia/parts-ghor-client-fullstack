@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
@@ -8,7 +8,7 @@ import Header from "../Shared/Header";
 import Loading from "../Shared/Loading";
 
 const SingleProduct = () => {
-  const [user] = useAuthState(auth)
+  const [user] = useAuthState(auth);
   const { id } = useParams();
   const {
     isLoading,
@@ -16,7 +16,9 @@ const SingleProduct = () => {
     data: product,
     refetch,
   } = useQuery(["product", id], () =>
-    fetch(`http://localhost:5000/product/${id}`).then((res) => res.json())
+    fetch(`https://nameless-inlet-18267.herokuapp.com/product/${id}`).then(
+      (res) => res.json()
+    )
   );
   if (isLoading) {
     return <Loading />;
@@ -28,29 +30,34 @@ const SingleProduct = () => {
       icon: "error",
     });
   }
+  
   const { name, price, min_order, quantity, desc, img } = product;
-
+  
   // place order
   const placeOrder = (event) => {
-    event.preventDefault()
-    const order = event.target.order.value
+    event.preventDefault();
+    const order = event.target.order.value;
+    
     const orderData = {
-      orderQuantity:order,
-      name:user?.displayName,
-      email:user?.email,
-      amout:parseInt(order * price)
-    }
-    if(order < min_order || order > quantity){
+      itemName:name,
+      orderQuantity: parseInt(order),
+      name: user?.displayName,
+      email: user?.email,
+      totalAmount: parseInt(order * price),
+    };
+    if (order < min_order || order > quantity) {
       swal({
-        title:'Placement Error',
-        text:'Please order by seing quantity',
-        icon:'error'
-      })
-    }else{
+        title: "Placement Error",
+        text: `Please order minimum ${order}`,
+        icon: "error",
+      });
+    } else {
       console.log(orderData);
+      
     }
-    event.target.reset()
+    event.target.reset();
   };
+  
   return (
     <>
       <Header />
@@ -81,14 +88,33 @@ const SingleProduct = () => {
                 Available In Stock:{" "}
                 <span className="text-lg font-bold">${quantity}</span>
               </p>
-              <div >
-                <form className="grid grid-cols-1" action="" onSubmit={placeOrder}>
+              <div>
+                <form
+                  className="grid grid-cols-1"
+                  action=""
+                  onSubmit={placeOrder}
+                >
+                  <input
+                    className="p-3 my-3 border-2"
+                    disabled
+                    type="text"
+                    value={user?.email}
+                    
+                  />
+                  <input
+                    className="p-3 my-3 border-2"
+                    disabled
+                    type="text"
+                    value={user?.displayName}
+                    
+                  />
                   <input
                     className="p-3 my-3 border-2"
                     required
                     type="number"
                     placeholder={`Minimum Order ${min_order} Please`}
-                    name='order'
+                    name="order"
+                    
                   />
                   <input
                     type="submit"

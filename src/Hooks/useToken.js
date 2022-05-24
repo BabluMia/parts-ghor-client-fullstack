@@ -1,29 +1,32 @@
 import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../firebase.init";
 
-const useToken = (user) => {
+const useToken = (email , displayName) => {
+  // console.log(user);
   const [token, setToken] = useState("");
+  // const [user1] = useAuthState(auth);
   useEffect(() => {
-    const email = user?.user?.email;
-    const displayName = user?.user?.displayName
-    const currentUser = {email: email,displayName:displayName};
-    if(email){
-        fetch(`http://localhost:5000/user/${email}`, {
-            method:'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body:JSON.stringify(currentUser)
-        })
-        .then(res=>res.json())
-        .then(data => {
-            // console.log('data inside useToken', data);
-            const accessToken = data.token
-            localStorage.setItem('accessToken', accessToken);
-            setToken(accessToken)
-            // console.log(accessToken);
-        })
+    // const email = user1?.email;
+
+    if (email && displayName) {
+      const currentUser = { email: email, displayName: displayName };
+      fetch(`https://nameless-inlet-18267.herokuapp.com/user/${email}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(currentUser),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const accessToken = data.token;
+          localStorage.setItem("accessToken", accessToken);
+          setToken(accessToken);
+          // console.log(accessToken);
+        });
     }
-  }, [user]);
-  return [token]
+  }, [email,displayName]);
+  return [token];
 };
 export default useToken;
