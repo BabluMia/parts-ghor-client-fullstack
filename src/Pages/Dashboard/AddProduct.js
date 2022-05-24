@@ -9,6 +9,7 @@ const AddProduct = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset
   } = useForm();
   const [user] = useAuthState(auth);
   const onSubmit = async (data) => {
@@ -28,7 +29,7 @@ const AddProduct = () => {
       },
       body: JSON.stringify(product),
     }).then(res=>res.json).then(data=>{
-        if(data.success){
+        if(data){
             swal({
                 title:'product Info',
                 text:'Successfully Added Doctor',
@@ -36,6 +37,7 @@ const AddProduct = () => {
             })
         }
         console.log(product)
+        reset()
     })
   };
   return (

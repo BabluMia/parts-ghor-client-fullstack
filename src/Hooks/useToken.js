@@ -10,7 +10,7 @@ const useToken = (email , displayName) => {
     // const email = user1?.email;
 
     if (email && displayName) {
-      const currentUser = { email: email, displayName: displayName };
+      const currentUser = { email: email, displayName: displayName ,clg:'',phone:null,address:''};
       fetch(`https://nameless-inlet-18267.herokuapp.com/user/${email}`, {
         method: "PUT",
         headers: {

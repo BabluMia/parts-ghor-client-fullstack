@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import swal from "sweetalert";
@@ -8,6 +9,7 @@ import Header from "../Shared/Header";
 import Loading from "../Shared/Loading";
 
 const SingleProduct = () => {
+  const { register, handleSubmit, setValue } = useForm();
   const [user] = useAuthState(auth);
   const { id } = useParams();
   const {
@@ -30,16 +32,16 @@ const SingleProduct = () => {
       icon: "error",
     });
   }
-  
+
   const { name, price, min_order, quantity, desc, img } = product;
-  
+
   // place order
   const placeOrder = (event) => {
     event.preventDefault();
     const order = event.target.order.value;
-    
+
     const orderData = {
-      itemName:name,
+      itemName: name,
       orderQuantity: parseInt(order),
       name: user?.displayName,
       email: user?.email,
@@ -53,11 +55,16 @@ const SingleProduct = () => {
       });
     } else {
       console.log(orderData);
-      
     }
     event.target.reset();
   };
-  
+
+  // Submit your data into Redux store
+  const onSubmit = (data) =>{
+    
+    console.log(data);
+  } 
+
   return (
     <>
       <Header />
@@ -99,14 +106,12 @@ const SingleProduct = () => {
                     disabled
                     type="text"
                     value={user?.email}
-                    
                   />
                   <input
                     className="p-3 my-3 border-2"
                     disabled
                     type="text"
                     value={user?.displayName}
-                    
                   />
                   <input
                     className="p-3 my-3 border-2"
@@ -114,7 +119,7 @@ const SingleProduct = () => {
                     type="number"
                     placeholder={`Minimum Order ${min_order} Please`}
                     name="order"
-                    
+                    value={min_order}
                   />
                   <input
                     type="submit"
@@ -122,6 +127,15 @@ const SingleProduct = () => {
                     class="btn bg-transparent text-accent hover:text-white w-40"
                   />
                 </form>
+                <div>
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <input className="border-4" type="text" {...register("firstName")} />
+                    <input className="border-4" type="text" {...register("lastName")} />
+                    <input className="border-4" type="submit" />
+                    {/*  defaultValue={props.firstName}
+ defaultValue={props.lastName} */}
+                  </form>
+                </div>
               </div>
             </div>
           </div>
