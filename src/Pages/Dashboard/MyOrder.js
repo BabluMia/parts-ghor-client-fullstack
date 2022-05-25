@@ -10,14 +10,45 @@ const MyOrder = () => {
   const email = user?.email;
   //   const url = `http://localhost:5000/order/`
   const [myOrder, setMyOrder] = useState([]);
-  fetch(`http://localhost:5000/order?email=${email}`)
+  fetch(`http://localhost:5000/order?email=${email}`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  })
     .then((res) => res.json())
     .then((data) => setMyOrder(data));
 
   return (
     <div>
-      <h3>My Order: {myOrder?.length}</h3>
-      
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Item Name</th>
+              <th>Orderd Quantity</th>
+              <th>Payable Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {myOrder?.map((order, index) => (
+              <tr key={index}>
+                <th>{index + 1}</th>
+                <td>{order?.itemName}</td>
+                <td>{order?.orderQuantity}</td>
+                <td>{order?.totalAmount}</td>
+                <td>
+                  <button class="btn btn-sm">Pay</button>
+                  <button class="btn btn-sm mx-2">Cancel</button>
+                </td>
+              </tr>
+            ))}
+            {console.log(myOrder)}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

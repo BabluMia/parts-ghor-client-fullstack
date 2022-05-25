@@ -8,7 +8,7 @@ import Loading from "../Shared/Loading";
 
 const Dashboard = () => {
   const [user, loading] = useAuthState(auth);
-  // const [admin] = useAdmin(user);
+  const [admin] = useAdmin(user);
   if (loading) {
     return <Loading />;
   }
@@ -32,17 +32,20 @@ const Dashboard = () => {
           <ul class="menu p-4 overflow-y-auto w-48 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
 
+
             <li>
-              <Link to={"/dashboard"}>My Order</Link>
+              <Link to={"/dashboard/"}>My Profile</Link>
             </li>
-            <li>
-              <Link to={"/dashboard/profile"}>My Profile</Link>
-            </li>
+            {!admin && <li>
+              <Link to={"/dashboard/my-order"}>My Order</Link>
+            </li>}
+            
+            
             <li>
               <Link to={"/dashboard/add-review"}>Add Review</Link>
             </li>
 
-            {/* {admin && ( <></>)} */}
+            {admin && 
               <>
                 <li>
                   <Link to={"/dashboard/users"}>All user</Link>
@@ -53,7 +56,7 @@ const Dashboard = () => {
                 <li>
                   <Link to={"/dashboard/manage-order"}>Manage Order</Link>
                 </li>
-              </>
+              </>}
             
           </ul>
         </div>

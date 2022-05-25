@@ -18,36 +18,66 @@ import NotFound from "./Pages/Shared/NotFound";
 import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 import AddReview from "./Pages/Dashboard/AddReview";
 import ManageOrder from "./Pages/Dashboard/ManageOrder";
-
-
+import RequireAdmin from "./Pages/Login/RequireAdmin";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/my-portfolio" element={<MyPortfolio/>}></Route>
-        <Route path="product/:id" element={
-          <RequireAuth>
-             <SingleProduct/>
-          </RequireAuth>
-           
-        }></Route>
+        <Route path="/my-portfolio" element={<MyPortfolio />}></Route>
+        <Route
+          path="product/:id"
+          element={
+            <RequireAuth>
+              <SingleProduct />
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="/login" element={<Login />} />
-        
+
         <Route path="/signup" element={<Signup />} />
-        <Route path="/blog" element={<Blog/>} />
-        <Route path="/contact" element={<Contact/>} />
-        <Route path="dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} >
-          <Route index element={<MyOrder/>}></Route>
-          <Route path="profile" element={<Profile/>}></Route>
-          <Route path="add-review" element={<AddReview/>}></Route>
-          <Route path="users" element={<Users/>}></Route>
-          <Route path="add-products" element={<AddProduct/>}></Route>
-          <Route path="manage-order" element={<ManageOrder/>}></Route>
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route
+          path="dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        >
+          <Route index element={<Profile />}></Route>
+          <Route path="my-order" element={<MyOrder />}></Route>
+
+          <Route path="add-review" element={<AddReview />}></Route>
+          <Route
+            path="users"
+            element={
+              <RequireAdmin>
+                <Users />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="add-products"
+            element={
+              <RequireAdmin>
+                <AddProduct />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="manage-order"
+            element={
+              <RequireAdmin>
+                <ManageOrder />
+              </RequireAdmin>
+            }
+          ></Route>
           <Route></Route>
         </Route>
-        <Route path="*" element={<NotFound/>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

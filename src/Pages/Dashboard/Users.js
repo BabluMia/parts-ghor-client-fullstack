@@ -9,6 +9,7 @@ const Users = () => {
     isLoading,
     error,
     data: users,
+    refetch
   } = useQuery(["usersData"], () =>
     fetch("https://nameless-inlet-18267.herokuapp.com/user", {
       method: "GET",
@@ -35,15 +36,16 @@ const Users = () => {
         <thead>
           <tr>
             <th></th>
-            <th>Name</th>
+            
             <th>Email</th>
-            <th>Action</th>
+            <th>Admin</th>
+            <th>Remove</th>
           </tr>
         </thead>
         <tbody>
           {users &&
             users?.map((user, index) => (
-              <UserRow key={index} index={index} user={user} />
+              <UserRow refetch={refetch} key={index} index={index} user={user} />
             ))}
         </tbody>
       </table>
