@@ -15,7 +15,9 @@ const Profile = () => {
     refetch,
     data: profile,
   } = useQuery(["userData", user], () =>
-    fetch(`http://localhost:5000/user/${user?.email}`).then((res) => res.json())
+    fetch(
+      `https://nameless-inlet-18267.herokuapp.com/user/${user?.email}`
+    ).then((res) => res.json())
   );
 
   if (isLoading) {
@@ -38,7 +40,7 @@ const Profile = () => {
       address: e.target.address.value,
       phone: parseInt(e.target.phone.value),
     };
-    fetch(`http://localhost:5000/user/${user?.email}`, {
+    fetch(`https://nameless-inlet-18267.herokuapp.com/user/${user?.email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -60,10 +62,9 @@ const Profile = () => {
       });
   };
   return (
-    <div>
-      <h4 className="text-center text-3xl my-4">My Profile</h4>
-      <div className="">
-        <div class="mx-auto mb-6 card w-96 bg-base-100 shadow-xl">
+    <>
+      
+        <div class="mx-auto  mb-6 card w-96 bg-base-100 shadow-xl">
           <figure class="px-10 pt-10">
             <div class="avatar">
               <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -132,7 +133,7 @@ const Profile = () => {
             </label>
           </div>
         </div>
-      </div>
+      
       {/* info card */}
 
       <div>
@@ -185,7 +186,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

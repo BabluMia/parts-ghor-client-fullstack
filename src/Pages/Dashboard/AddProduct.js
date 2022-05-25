@@ -9,7 +9,7 @@ const AddProduct = () => {
     register,
     formState: { errors },
     handleSubmit,
-    reset
+    reset,
   } = useForm();
   const [user] = useAuthState(auth);
   const onSubmit = async (data) => {
@@ -22,23 +22,25 @@ const AddProduct = () => {
       img: data.img,
     };
     console.log(product);
-    fetch("http://localhost:5000/products", {
+    fetch("https://nameless-inlet-18267.herokuapp.com/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(product),
-    }).then(res=>res.json).then(data=>{
-        if(data){
-            swal({
-                title:'product Info',
-                text:'Successfully Added Doctor',
-                icon:'success'
-            })
-        }
-        console.log(product)
-        reset()
     })
+      .then((res) => res.json)
+      .then((data) => {
+        if (data) {
+          swal({
+            title: "product Info",
+            text: "Successfully Added Doctor",
+            icon: "success",
+          });
+        }
+        console.log(product);
+        reset();
+      });
   };
   return (
     <div>

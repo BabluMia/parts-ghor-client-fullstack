@@ -11,13 +11,17 @@ import Loading from "../Shared/Loading";
 const SingleProduct = () => {
   const [user] = useAuthState(auth);
   const { id } = useParams();
-  const url = `http://localhost:5000/product/${id}`;
+  const url = `https://nameless-inlet-18267.herokuapp.com/product/${id}`;
   const {
     isLoading,
     error,
     data: product,
     refetch,
-  } = useQuery(["product", id], () => fetch(`http://localhost:5000/product/${id}`).then((res) => res.json()));
+  } = useQuery(["product", id], () =>
+    fetch(`https://nameless-inlet-18267.herokuapp.com/product/${id}`).then(
+      (res) => res.json()
+    )
+  );
 
   if (error) {
     swal({
@@ -70,7 +74,7 @@ const SingleProduct = () => {
         icon: "error",
       });
     } else {
-      fetch(`http://localhost:5000/orders`, {
+      fetch(`https://nameless-inlet-18267.herokuapp.com/orders`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(orderData),
@@ -78,12 +82,16 @@ const SingleProduct = () => {
         .then((res) => res.json())
         .then((result) => {
           if (result.insertedId) {
-            const newQ = parseInt(quantity) - parseInt(order)
-            fetch(`http://localhost:5000/product/${id}`, {
+            const newQ = parseInt(quantity) - parseInt(order);
+            fetch(`https://nameless-inlet-18267.herokuapp.com/product/${id}`, {
               method: "PUT",
               headers: { "content-type": "application/json" },
-              body: JSON.stringify({quantity : newQ}),
-            }).then(res=>res.json()).then(data=>console.log(data));
+              body: JSON.stringify({ quantity: newQ }),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                refetch();
+                console.log(data)});
             swal({
               title: " Order Notification ",
               text: "Thank You For Your Order ....",
@@ -91,7 +99,7 @@ const SingleProduct = () => {
             });
             // console.log(result);
           }
-          refetch()
+          
         });
       console.log(orderData);
     }

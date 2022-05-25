@@ -17,6 +17,7 @@ import AddProduct from "./Pages/Dashboard/AddProduct";
 import NotFound from "./Pages/Shared/NotFound";
 import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 import AddReview from "./Pages/Dashboard/AddReview";
+import ManageOrder from "./Pages/Dashboard/ManageOrder";
 
 
 
@@ -43,6 +44,7 @@ function App() {
           <Route path="add-review" element={<AddReview/>}></Route>
           <Route path="users" element={<Users/>}></Route>
           <Route path="add-products" element={<AddProduct/>}></Route>
+          <Route path="manage-order" element={<ManageOrder/>}></Route>
           <Route></Route>
         </Route>
         <Route path="*" element={<NotFound/>} />
