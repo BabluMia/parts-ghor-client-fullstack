@@ -18,45 +18,47 @@ const Profile = () => {
     fetch(`http://localhost:5000/user/${user?.email}`).then((res) => res.json())
   );
 
-  if(isLoading){
-      return <Loading/>
+  if (isLoading) {
+    return <Loading />;
   }
-  if(error){
+  if (error) {
     swal({
-        title:'Fetch Error',
-        text:'Faild To Fetch',
-        icon:'error'
-    })
+      title: "Fetch Error",
+      text: "Faild To Fetch",
+      icon: "error",
+    });
   }
-//   console.log(profile);
-const getData = e=>{
-    e.preventDefault()
+  //   console.log(profile);
+  const getData = (e) => {
+    e.preventDefault();
     const update = {
-        name:profile?.displayName,
-        email:profile?.email,
-        clg:e.target.clg.value ,
-        address:e.target.address.value,
-        phone:parseInt(e.target.phone.value)
-    }
-    fetch(`http://localhost:5000/user/${user?.email}`,{
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(update),
-    }).then((res) => res.json()).then(data=>{
-        console.log(data);
-        if(data){
-            swal({
-                title:'Info Updated',
-                text:'Data Updated Successfully',
-                icon:'success'
-            })
-            refetch()
-            e.target.reset()
-        }
+      name: profile?.displayName,
+      email: profile?.email,
+      clg: e.target.clg.value,
+      address: e.target.address.value,
+      phone: parseInt(e.target.phone.value),
+    };
+    fetch(`http://localhost:5000/user/${user?.email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(update),
     })
-}
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data) {
+          swal({
+            title: "Info Updated",
+            text: "Data Updated Successfully",
+            icon: "success",
+          });
+          refetch();
+          e.target.reset();
+        }
+      });
+  };
   return (
     <div>
       <h4 className="text-center text-3xl my-4">My Profile</h4>
@@ -69,7 +71,7 @@ const getData = e=>{
                   <img src={user?.photoURL} alt="" />
                 ) : (
                   <img
-                    src="https://api.lorem.space/image/face?hash=3174"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3rzr5yCjWIMDSeo2uKEkNUIx3yOSwwBZP8w&usqp=CAU"
                     alt=""
                   />
                 )}
@@ -81,7 +83,7 @@ const getData = e=>{
             <p>Email: {profile?.email}</p>
             <div class="form-control w-full max-w-xs">
               <label class="label">
-                <span class="label-text">College Name</span>
+                <span class="label-text">College Name:</span>
               </label>
               <input
                 type="text"
@@ -122,19 +124,65 @@ const getData = e=>{
                 class="input input-bordered w-full max-w-xs text-lg focus:outline-none  font-bold text-black"
               />
             </div>
+            <label
+              for="my-modal"
+              class="my-2 cursor-pointer hover:text-blue-500"
+            >
+              Edit Data??
+            </label>
           </div>
         </div>
       </div>
       {/* info card */}
-      <div class="mx-auto card w-96 bg-base-100 shadow-xl">
-        <div class="card-body">
-            <form action="" onSubmit={getData}>
-            <input required type="text" name="clg" placeholder="Add College" class=" my-3 input input-bordered w-full max-w-xs" />
-            <input required type="text" name="address" placeholder="Add Address" class=" my-3 input input-bordered w-full max-w-xs" />
-            <input required type="number" name="phone" placeholder="Add Number" class=" my-3 input input-bordered w-full max-w-xs" />
-            <input type="submit" value='Submit' className="btn btn-primary" />
-            </form>
-          
+
+      <div>
+        {/* <!-- The button to open modal --> */}
+
+        {/* <!-- Put this part before </body> tag --> */}
+        <input type="checkbox" id="my-modal" class="modal-toggle" />
+        <div class="modal">
+          <div class="modal-box">
+            <label
+              for="my-modal"
+              class="btn btn-sm btn-circle absolute right-2 top-2"
+            >
+              ✕
+            </label>
+            <div class="card-body">
+              <span className="text-center my-2 ">Edit Info</span>
+              <form action="" onSubmit={getData}>
+                <input
+                  required
+                  type="text"
+                  name="clg"
+                  placeholder="Add College"
+                  class=" my-3 input input-bordered w-full max-w-xs"
+                />
+                <input
+                  required
+                  type="text"
+                  name="address"
+                  placeholder="Add Address"
+                  class=" my-3 input input-bordered w-full max-w-xs"
+                />
+                <input
+                  required
+                  type="number"
+                  name="phone"
+                  placeholder="Add Number"
+                  class=" my-3 input input-bordered w-full max-w-xs"
+                />
+                <div class="modal-action">
+                  <input
+                    for="my-modal"
+                    type="submit"
+                    value="Submit"
+                    className="btn btn-primary"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
