@@ -8,9 +8,9 @@ import Loading from "../Shared/Loading";
 const MyOrder = () => {
   const [user] = useAuthState(auth);
   const email = user?.email;
-  //   const url = `http://localhost:5000/order/`
+  //   const url = `https://nameless-inlet-18267.herokuapp.com/order/`
   const [myOrder, setMyOrder] = useState([]);
-  fetch(`http://localhost:5000/order?email=${email}`, {
+  fetch(`https://nameless-inlet-18267.herokuapp.com/order?email=${email}`, {
     method: "GET",
     headers: {
       authorization: `Bearer ${localStorage.getItem("accessToken")}`,

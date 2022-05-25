@@ -4,7 +4,7 @@ import swal from "sweetalert";
 const UserRow = ({ user, index, refetch }) => {
   const { email, role } = user;
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://nameless-inlet-18267.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         // "content-type": "application/json",
@@ -25,15 +25,15 @@ const UserRow = ({ user, index, refetch }) => {
         console.log(data);
 
         if (data.modifiedCount > 0) {
-            swal({
-              title: "Admin Information",
-              text: "Succesfully Added Admin",
-              icon: "success",
-            })}
-
+          swal({
+            title: "Admin Information",
+            text: "Succesfully Added Admin",
+            icon: "success",
+          });
+        }
 
         refetch();
-      })
+      });
   };
   return (
     <tr class="hover">

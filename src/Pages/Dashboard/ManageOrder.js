@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const ManageOrder = () => {
-    const [allOrder,setAllOrder] = useState([])
-    fetch(`http://localhost:5000/orders`)
-    .then(res=>res.json())
-    .then(data=>setAllOrder(data))
-    return (
-        <div>
-            <p className='my-3 text-3xl text-center'>Manage All  Order</p>
-            <div class="overflow-x-auto">
+  const [allOrder, setAllOrder] = useState([]);
+  fetch(`https://nameless-inlet-18267.herokuapp.com/orders`)
+    .then((res) => res.json())
+    .then((data) => setAllOrder(data));
+  return (
+    <div>
+      <p className="my-3 text-3xl text-center">Manage All Order</p>
+      <div class="overflow-x-auto">
         <table class="table table-zebra w-full">
           <thead>
             <tr>
@@ -21,23 +21,21 @@ const ManageOrder = () => {
             </tr>
           </thead>
           <tbody>
-              {
-                  allOrder?.map((order,index)=> <tr key={index}>
-                  <th>{index+1}</th>
-                  <td>{order.email}</td>
-                  <td>{order.itemName}</td>
-                  <td>{order.orderQuantity}</td>
-                  <td>{order.totalAmount}</td>
-                  <td>Action</td>
-                </tr>)
-              }
-            
-              
+            {allOrder?.map((order, index) => (
+              <tr key={index}>
+                <th>{index + 1}</th>
+                <td>{order.email}</td>
+                <td>{order.itemName}</td>
+                <td>{order.orderQuantity}</td>
+                <td>{order.totalAmount}</td>
+                <td>Action</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default ManageOrder;

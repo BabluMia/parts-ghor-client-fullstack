@@ -8,9 +8,10 @@ const useToken = (email , displayName) => {
   // const [user1] = useAuthState(auth);
   useEffect(() => {
     // const email = user1?.email;
+    // ,clg:'',phone:null,address:''
 
     if (email && displayName) {
-      const currentUser = { email: email, displayName: displayName ,clg:'',phone:null,address:''};
+      const currentUser = { email: email, displayName: displayName };
       fetch(`https://nameless-inlet-18267.herokuapp.com/user/${email}`, {
         method: "PUT",
         headers: {
