@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 import Loading from "../Shared/Loading";
 import useToken from "../../Hooks/useToken";
+import Header from "../Shared/Header";
 
 const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -78,6 +79,8 @@ const Login = () => {
     });
   }
   return (
+    <>
+    <Header/>
     <div class="hero min-h-screen bg-base-200">
       <div class="hero-content flex-col lg:flex-row-reverse">
         <div class="text-center lg:text-left ">
@@ -184,6 +187,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

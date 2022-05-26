@@ -38,8 +38,9 @@ const Users = () => {
             <th></th>
 
             <th>Email</th>
-            <th>Admin</th>
             <th>Remove</th>
+            <th>Admin</th>
+            
           </tr>
         </thead>
         <tbody>
