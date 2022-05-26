@@ -40,7 +40,7 @@ const ReviewSlider = () => {
         <h3 className="text-center my-6 text-2xl text-success">
           See Our customar review Review{" "}
         </h3>
-        <p className="my-4 max-w-lg mx-auto">
+        <p className="my-4 mx-3 max-w-lg lg:mx-auto">
           The term manufacturing refers to the processing of raw materials or
           parts into finished goods through the use of tools, human labor,
           machinery, and chemical processing. Manufacturing allows businesses to
@@ -64,7 +64,7 @@ const ReviewSlider = () => {
         >
           {[...reviews].reverse().map((review, index) => (
             <SwiperSlide key={index}>
-              <div className="max-w-lg mx-auto  p-1 lg:p-12">
+              <div className="max-w-lg mx-auto  p-2 lg:p-12">
                 <div class="avatar ">
                   <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     {review.img !== null ? (

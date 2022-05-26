@@ -22,7 +22,7 @@ const ProductMap = ({ product }) => {
       <div class="card-body">
         <h2 class="card-title">
           {name}
-          <div class="badge badge-secondary">NEW</div>
+          
         </h2>
         <p>{desc.slice(0,50)}...</p>
         <p>Per Quantity: ${price}</p>
