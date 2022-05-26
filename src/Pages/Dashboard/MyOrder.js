@@ -34,7 +34,7 @@ const MyOrder = () => {
               <th>Orderd Quantity</th>
               <th>Payable Amount</th>
               <th>Action</th>
-              <th>Remove</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -50,27 +50,30 @@ const MyOrder = () => {
                       <button class="btn btn-sm mx-2">Pay</button>
                     </Link>
                   )}
-                  {order?.paid && <span>Paid - id: {order?.transactionId}</span>}
+                  {order?.paid && (
+                    <span>Paid - id: {order?.transactionId}</span>
+                  )}
                 </td>
                 <td>
-                  {
-                    !order?.paid ? <a
-                    href="#my-modal-2"
-                    onClick={() => setOrder(order)}
-                    class="btn btn-sm"
-                  >
-                    Cancel
-                  </a> : "Pending "
-                  }
-                  
+                  {!order?.paid ? (
+                    <a
+                      href="#my-modal-2"
+                      onClick={() => setOrder(order)}
+                      class="btn btn-sm"
+                    >
+                      Cancel
+                    </a>
+                  ) : (
+                    "Pending "
+                  )}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
         {/* --------- */}
-        {order !== null && <OrderDel setOrder={setOrder} order={order} />}
       </div>
+      {order !== null && <OrderDel setOrder={setOrder} order={order} />}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 // import "~slick-carousel/slick/slick.css"; 
 // import "~slick-carousel/slick/slick-theme.css";
+// https://nameless-inlet-18267.herokuapp.com/
 import {
   QueryClient,
   QueryClientProvider,
@@ -20,5 +21,5 @@ root.render(
         <App />
       </BrowserRouter>
     </QueryClientProvider>
-  </React.StrictMode>
+   </React.StrictMode>
 );

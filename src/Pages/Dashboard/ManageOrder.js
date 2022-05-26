@@ -16,7 +16,7 @@ const ManageOrder = () => {
               <th>Email</th>
               <th>Item</th>
               <th>Quantity</th>
-              <th>Amount</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -27,7 +27,13 @@ const ManageOrder = () => {
                 <td>{order.email}</td>
                 <td>{order.itemName}</td>
                 <td>{order.orderQuantity}</td>
-                <td>{order.totalAmount}</td>
+                <td>
+                  {order.paid === true ? (
+                    <span className="text-cyan-900 font-bold">Paid Done</span>
+                  ) : (
+                    <span className="font-bold text-danger">Not Paid</span>
+                  )}
+                </td>
                 <td>Action</td>
               </tr>
             ))}

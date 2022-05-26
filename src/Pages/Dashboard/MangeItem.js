@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import swal from "sweetalert";
 import Loading from "../Shared/Loading";
+import ManageItemModal from "./ManageItemModal";
 
 const MangeItem = () => {
+  const [singleProduct, setSingleProduct] = useState(null);
   const {
     isLoading,
     error,
     data: allProducts,
+    refetch,
   } = useQuery("products", () =>
     fetch("https://nameless-inlet-18267.herokuapp.com/products").then((res) =>
       res.json()
     )
   );
+
   if (isLoading) {
     return <Loading />;
   }
@@ -50,11 +54,26 @@ const MangeItem = () => {
                   </td>
                   <td>{product.name}</td>
                   <td>
-                    <button class="btn btn-xs" >Delete</button>
+                    <a
+                      href="#my-modal-3"
+                      onClick={() => setSingleProduct(product)}
+                      class="btn btn-sm"
+                    >
+                      Delete
+                    </a>
+                    {console.log(product)}
                   </td>
                 </tr>
               ))}
             </tbody>
+            {console.log(singleProduct)}
+            {singleProduct !== null && (
+              <ManageItemModal
+                setSingleProduct={setSingleProduct}
+                singleProduct={singleProduct}
+                refetch={refetch}
+              />
+            )}
           </table>
         </div>
       </div>

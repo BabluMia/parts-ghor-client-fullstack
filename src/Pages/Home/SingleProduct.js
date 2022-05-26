@@ -91,7 +91,8 @@ const SingleProduct = () => {
               .then((res) => res.json())
               .then((data) => {
                 refetch();
-                console.log(data)});
+                console.log(data);
+              });
             swal({
               title: " Order Notification ",
               text: "Thank You For Your Order ....",
@@ -99,7 +100,6 @@ const SingleProduct = () => {
             });
             // console.log(result);
           }
-          
         });
       console.log(orderData);
     }

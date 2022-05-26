@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase.init";
 
-const useToken = (email , displayName) => {
+const useToken = (email, displayName) => {
   // console.log(user);
   const [token, setToken] = useState("");
   // const [user1] = useAuthState(auth);
@@ -27,7 +27,7 @@ const useToken = (email , displayName) => {
           // console.log(accessToken);
         });
     }
-  }, [email,displayName]);
+  }, [email, displayName]);
   return [token];
 };
 export default useToken;

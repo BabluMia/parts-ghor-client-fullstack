@@ -63,77 +63,73 @@ const Profile = () => {
   };
   return (
     <>
-      
-        <div class="mx-auto  mb-6 card w-96 bg-base-100 shadow-xl">
-          <figure class="px-10 pt-10">
-            <div class="avatar">
-              <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                {user?.photoURL ? (
-                  <img src={user?.photoURL} alt="" />
-                ) : (
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3rzr5yCjWIMDSeo2uKEkNUIx3yOSwwBZP8w&usqp=CAU"
-                    alt=""
-                  />
-                )}
-              </div>
+      <div class="mx-auto  mb-6 card w-96 bg-base-100 shadow-xl">
+        <figure class="px-10 pt-10">
+          <div class="avatar">
+            <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              {user?.photoURL ? (
+                <img src={user?.photoURL} alt="" />
+              ) : (
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3rzr5yCjWIMDSeo2uKEkNUIx3yOSwwBZP8w&usqp=CAU"
+                  alt=""
+                />
+              )}
             </div>
-          </figure>
-          <div class="card-body items-center text-center">
-            <h2 class="card-title">Name : {profile?.displayName}</h2>
-            <p>Email: {profile?.email}</p>
-            <div class="form-control w-full max-w-xs">
-              <label class="label">
-                <span class="label-text">College Name:</span>
-              </label>
-              <input
-                type="text"
-                readOnly
-                placeholder={
-                  profile?.clg === "" ? "No College Name Yet! " : profile?.clg
-                }
-                class="input input-bordered w-full max-w-xs text-lg focus:outline-none  font-bold text-black"
-              />
-            </div>
-            <div class="form-control w-full max-w-xs">
-              <label class="label">
-                <span class="label-text">Address:</span>
-              </label>
-              <input
-                type="text"
-                readOnly
-                placeholder={
-                  profile?.address === ""
-                    ? "No Address Added Yet!"
-                    : profile?.address
-                }
-                class="input input-bordered w-full max-w-xs text-lg focus:outline-none  font-bold text-black"
-              />
-            </div>
-            <div class="form-control w-full max-w-xs">
-              <label class="label">
-                <span class="label-text">Number</span>
-              </label>
-              <input
-                type="text"
-                readOnly
-                placeholder={
-                  profile?.phone === null
-                    ? "No Phone Added Yet! "
-                    : profile?.phone
-                }
-                class="input input-bordered w-full max-w-xs text-lg focus:outline-none  font-bold text-black"
-              />
-            </div>
-            <label
-              for="my-modal"
-              class="my-2 cursor-pointer hover:text-blue-500"
-            >
-              Edit Data??
-            </label>
           </div>
+        </figure>
+        <div class="card-body items-center text-center">
+          <h2 class="card-title">Name : {profile?.displayName}</h2>
+          <p>Email: {profile?.email}</p>
+          <div class="form-control w-full max-w-xs">
+            <label class="label">
+              <span class="label-text">College Name:</span>
+            </label>
+            <input
+              type="text"
+              readOnly
+              placeholder={
+                profile?.clg === "" ? "No College Name Yet! " : profile?.clg
+              }
+              class="input input-bordered w-full max-w-xs text-lg focus:outline-none  font-bold text-black"
+            />
+          </div>
+          <div class="form-control w-full max-w-xs">
+            <label class="label">
+              <span class="label-text">Address:</span>
+            </label>
+            <input
+              type="text"
+              readOnly
+              placeholder={
+                profile?.address === ""
+                  ? "No Address Added Yet!"
+                  : profile?.address
+              }
+              class="input input-bordered w-full max-w-xs text-lg focus:outline-none  font-bold text-black"
+            />
+          </div>
+          <div class="form-control w-full max-w-xs">
+            <label class="label">
+              <span class="label-text">Number</span>
+            </label>
+            <input
+              type="text"
+              readOnly
+              placeholder={
+                profile?.phone === null
+                  ? "No Phone Added Yet! "
+                  : profile?.phone
+              }
+              class="input input-bordered w-full max-w-xs text-lg focus:outline-none  font-bold text-black"
+            />
+          </div>
+          <label for="my-modal" class="my-2 cursor-pointer hover:text-blue-500">
+            Edit Data??
+          </label>
         </div>
-      
+      </div>
+
       {/* info card */}
 
       <div>

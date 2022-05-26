@@ -34,7 +34,7 @@ const AddProduct = () => {
         if (data) {
           swal({
             title: "product Info",
-            text: "Successfully Added Doctor",
+            text: "Successfully Added Product",
             icon: "success",
           });
         }

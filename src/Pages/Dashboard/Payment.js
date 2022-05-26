@@ -9,11 +9,11 @@ import CheckoutForm from "./CheckoutForm";
 const stripePromise = loadStripe(
   "pk_test_51L0hNTKkJKROZj1EgrDLSrL4xf7QswyNJF1fKxL3qYtvSMgCwTWNQYCxv8moCjHbUYfOve7YVJnpOMIxZVmiLak3004eNi13T6"
 );
-// 
+//
 
 const Payment = () => {
   const { id } = useParams();
-  const url = `http://localhost:5000/orders/${id}`;
+  const url = `https://nameless-inlet-18267.herokuapp.com/orders/${id}`;
   const {
     isLoading,
     error,
