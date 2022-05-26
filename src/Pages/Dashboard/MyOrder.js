@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import swal from "sweetalert";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
+import OrderDel from "./OrderDel";
 
 const MyOrder = () => {
   const [user] = useAuthState(auth);
@@ -18,6 +19,8 @@ const MyOrder = () => {
   })
     .then((res) => res.json())
     .then((data) => setMyOrder(data));
+
+  const [order,setOrder] = useState(null)
 
   return (
     <div>
@@ -40,14 +43,20 @@ const MyOrder = () => {
                 <td>{order?.orderQuantity}</td>
                 <td>{order?.totalAmount}</td>
                 <td>
-                  <button class="btn btn-sm">Pay</button>
-                  <button class="btn btn-sm mx-2">Cancel</button>
+                  <button class="btn btn-sm mx-2">Pay</button>
+                  <a href="#my-modal-2" onClick={()=>setOrder(order)} class="btn btn-sm">
+                    Cancel
+                  </a>
                 </td>
               </tr>
             ))}
-            {console.log(myOrder)}
+            
           </tbody>
         </table>
+        {/* --------- */}
+        {
+          order !== null && <OrderDel setOrder={setOrder } order={order} />
+        }
       </div>
     </div>
   );
