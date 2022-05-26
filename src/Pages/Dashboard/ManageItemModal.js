@@ -1,8 +1,8 @@
 import React from "react";
 import swal from "sweetalert";
 
-const ManageItemModal = ({ singlePoduct, setSingleProduct, refetch }) => {
-  console.log(singlePoduct);
+const ManageItemModal = ({ singleProduct, setSingleProduct, refetch }) => {
+//   console.log(singleProduct);
   const deleteItem = (id) => {
     const url = `https://nameless-inlet-18267.herokuapp.com/product/${id}`;
     fetch(url, {
@@ -17,7 +17,7 @@ const ManageItemModal = ({ singlePoduct, setSingleProduct, refetch }) => {
             icon: "success",
           });
         }
-        console.log(singlePoduct);
+        // console.log(singlePoduct);
         setSingleProduct(null);
         refetch();
       });
@@ -34,13 +34,13 @@ const ManageItemModal = ({ singlePoduct, setSingleProduct, refetch }) => {
         </label>
 
         <h3 class="font-bold text-lg">
-          {`Are you sure u want to delete  ${singlePoduct?.name}`}
+          {`Are you sure u want to delete  ${singleProduct?.name}`}
         </h3>
         <p class="py-4">If you delete you do not able to see it on your Item</p>
         <div class="modal-action">
           <button
             class="btn btn-sm mx-2"
-            onClick={() => deleteItem(singlePoduct?._id)}
+            onClick={() => deleteItem(singleProduct?._id)}
           >
             Delete
           </button>
