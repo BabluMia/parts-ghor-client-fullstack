@@ -28,7 +28,7 @@ const Products = () => {
     <div>
       <h2 className="text-4xl text-center my-5 ">What We Manufacturer</h2>
       <div className="grid mb-32 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 justify-center items-center">
-        {products?.slice(0, 6).map((product, index) => (
+        {[...products]?.reverse().slice(0, 6).map((product, index) => (
           <ProductMap key={index} product={product}></ProductMap>
         ))}
       </div>
