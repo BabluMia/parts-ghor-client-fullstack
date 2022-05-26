@@ -19,6 +19,8 @@ import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 import AddReview from "./Pages/Dashboard/AddReview";
 import ManageOrder from "./Pages/Dashboard/ManageOrder";
 import RequireAdmin from "./Pages/Login/RequireAdmin";
+import MangeItem from "./Pages/Dashboard/MangeItem";
+import Payment from "./Pages/Dashboard/Payment";
 
 function App() {
   return (
@@ -51,6 +53,7 @@ function App() {
           <Route path="my-order" element={<MyOrder />}></Route>
 
           <Route path="add-review" element={<AddReview />}></Route>
+          <Route path="payment/:id" element={<Payment/>}></Route>
           <Route
             path="users"
             element={
@@ -75,7 +78,15 @@ function App() {
               </RequireAdmin>
             }
           ></Route>
-          <Route></Route>
+          <Route
+            path="manage-Item"
+            element={
+              <RequireAdmin>
+                <MangeItem/>
+              </RequireAdmin>
+            }
+          ></Route>
+          
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

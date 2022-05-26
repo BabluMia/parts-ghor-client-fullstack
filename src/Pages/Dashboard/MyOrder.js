@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
@@ -20,7 +21,7 @@ const MyOrder = () => {
     .then((res) => res.json())
     .then((data) => setMyOrder(data));
 
-  const [order,setOrder] = useState(null)
+  const [order, setOrder] = useState(null);
 
   return (
     <div>
@@ -33,6 +34,7 @@ const MyOrder = () => {
               <th>Orderd Quantity</th>
               <th>Payable Amount</th>
               <th>Action</th>
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody>
@@ -43,20 +45,31 @@ const MyOrder = () => {
                 <td>{order?.orderQuantity}</td>
                 <td>{order?.totalAmount}</td>
                 <td>
-                  <button class="btn btn-sm mx-2">Pay</button>
-                  <a href="#my-modal-2" onClick={()=>setOrder(order)} class="btn btn-sm">
+                  {!order?.paid && (
+                    <Link to={`/dashboard/payment/${order._id}`}>
+                      <button class="btn btn-sm mx-2">Pay</button>
+                    </Link>
+                  )}
+                  {order?.paid && <span>Paid - id: {order?.transactionId}</span>}
+                </td>
+                <td>
+                  {
+                    !order?.paid ? <a
+                    href="#my-modal-2"
+                    onClick={() => setOrder(order)}
+                    class="btn btn-sm"
+                  >
                     Cancel
-                  </a>
+                  </a> : "Pending "
+                  }
+                  
                 </td>
               </tr>
             ))}
-            
           </tbody>
         </table>
         {/* --------- */}
-        {
-          order !== null && <OrderDel setOrder={setOrder } order={order} />
-        }
+        {order !== null && <OrderDel setOrder={setOrder} order={order} />}
       </div>
     </div>
   );
